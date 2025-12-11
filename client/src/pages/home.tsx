@@ -25,7 +25,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo-transparent.png";
 import heroBg from "@assets/generated_images/modern_corporate_office_hero_background_with_blue_tones.png";
 import patternBg from "@assets/generated_images/subtle_abstract_geometric_corporate_background.png";
 
@@ -81,9 +81,9 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-slate-50">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 shadow-sm">
-        <div className="container mx-auto px-4 h-32 flex items-center justify-between">
+        <div className="container mx-auto px-4 h-[125px] flex items-center justify-between">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <img src={logo} alt="Progreso Consultants" className="h-28 w-auto mix-blend-multiply" />
+            <img src={logo} alt="Progreso Consultants" className="h-[125px] w-auto" />
           </div>
 
           {/* Desktop Nav */}
@@ -200,7 +200,7 @@ export default function Home() {
 
           <div className="mt-16 bg-white p-8 md:p-12 rounded-2xl border shadow-lg relative overflow-hidden">
             <div className="absolute top-0 right-0 p-12 opacity-5">
-              <img src={logo} alt="" className="w-64 h-auto mix-blend-multiply grayscale" />
+              <img src={logo} alt="" className="w-64 h-auto grayscale" />
             </div>
             <h3 className="text-2xl font-bold mb-6 font-heading">Our Values</h3>
             <div className="grid md:grid-cols-2 gap-6">
@@ -619,7 +619,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <img src={logo} alt="Progreso" className="h-10 w-auto brightness-0 invert" />
+                <img src={logo} alt="Progreso" className="h-16 w-auto brightness-0 invert" />
               </div>
               <p className="text-sm opacity-80 max-w-xs">
                 Transforming small businesses into intergenerational assets through systems-driven consultancy.
