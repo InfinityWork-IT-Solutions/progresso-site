@@ -26,6 +26,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import logo from "@/assets/logo.jpg";
+import heroBg from "@assets/generated_images/modern_corporate_office_hero_background_with_blue_tones.png";
+import patternBg from "@assets/generated_images/subtle_abstract_geometric_corporate_background.png";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -78,10 +80,10 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+      <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 shadow-sm">
+        <div className="container mx-auto px-4 h-24 flex items-center justify-between">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <img src={logo} alt="Progreso Consultants" className="h-12 w-auto mix-blend-multiply" />
+            <img src={logo} alt="Progreso Consultants" className="h-20 w-auto mix-blend-multiply" />
           </div>
 
           {/* Desktop Nav */}
@@ -110,8 +112,13 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 overflow-hidden bg-white">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-100 via-transparent to-transparent opacity-50"></div>
+      <section className="relative py-28 lg:py-40 overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img src={heroBg} alt="Background" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-slate-900/70"></div>
+        </div>
+        
         <div className="container px-4 md:px-6 relative z-10">
           <motion.div 
             initial="hidden"
@@ -119,20 +126,20 @@ export default function Home() {
             variants={stagger}
             className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto"
           >
-            <motion.div variants={fadeIn} className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/80 uppercase tracking-wider">
+            <motion.div variants={fadeIn} className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/90 uppercase tracking-wider shadow-lg">
               We are For The SMMEs
             </motion.div>
-            <motion.h1 variants={fadeIn} className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 font-heading">
+            <motion.h1 variants={fadeIn} className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white font-heading drop-shadow-md">
               The Engine of the Economy
             </motion.h1>
-            <motion.p variants={fadeIn} className="text-xl md:text-2xl text-slate-600 max-w-[800px]">
+            <motion.p variants={fadeIn} className="text-xl md:text-2xl text-slate-100 max-w-[800px] drop-shadow-sm leading-relaxed">
               Building the Backbone of South Africa’s Economy. We turn survivalist enterprises into sustainable assets through fixed-cost, high-impact strategy.
             </motion.p>
             <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button size="lg" className="h-12 px-8 text-lg" onClick={() => scrollToSection('contact')}>
+              <Button size="lg" className="h-14 px-8 text-lg bg-primary hover:bg-blue-600 text-white border-none shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1" onClick={() => scrollToSection('contact')}>
                 Start Growing Today <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button variant="outline" size="lg" className="h-12 px-8 text-lg" onClick={() => scrollToSection('solutions')}>
+              <Button variant="outline" size="lg" className="h-14 px-8 text-lg bg-white/10 text-white border-white/30 hover:bg-white hover:text-slate-900 backdrop-blur-sm transition-all hover:-translate-y-1" onClick={() => scrollToSection('solutions')}>
                 View Our Solutions
               </Button>
             </motion.div>
@@ -141,8 +148,12 @@ export default function Home() {
       </section>
 
       {/* Core Identity Section */}
-      <section id="about" className="py-20 bg-slate-50">
-        <div className="container px-4 md:px-6">
+      <section id="about" className="py-24 bg-slate-50 relative overflow-hidden">
+        {/* Subtle Pattern Background */}
+        <div className="absolute inset-0 z-0 opacity-40">
+           <img src={patternBg} alt="" className="w-full h-full object-cover" />
+        </div>
+        <div className="container px-4 md:px-6 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -177,16 +188,20 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white p-8 rounded-xl shadow-sm border hover:shadow-md transition-shadow"
+                className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group"
               >
-                <div className="mb-4 p-3 bg-blue-50 rounded-lg w-fit">{item.icon}</div>
+                <div className="absolute top-0 left-0 w-1 h-full bg-primary/0 group-hover:bg-primary/100 transition-all duration-300"></div>
+                <div className="mb-4 p-3 bg-blue-50 rounded-lg w-fit group-hover:bg-blue-100 transition-colors">{item.icon}</div>
                 <h3 className="text-xl font-bold mb-3 font-heading">{item.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{item.content}</p>
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-16 bg-white p-8 md:p-12 rounded-2xl border shadow-sm">
+          <div className="mt-16 bg-white p-8 md:p-12 rounded-2xl border shadow-lg relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-12 opacity-5">
+              <img src={logo} alt="" className="w-64 h-auto mix-blend-multiply grayscale" />
+            </div>
             <h3 className="text-2xl font-bold mb-6 font-heading">Our Values</h3>
             <div className="grid md:grid-cols-2 gap-6">
               {[
@@ -356,26 +371,27 @@ export default function Home() {
                     roi: "Creates a non-negotiable standard for all decisions."
                   }
                 ].map((item, i) => (
-                  <Card key={i} className="flex flex-col">
-                    <CardHeader>
-                      <CardTitle>{item.name}</CardTitle>
+                  <Card key={i} className="flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary/50 group overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <CardHeader className="group-hover:bg-slate-50/50 transition-colors">
+                      <CardTitle className="group-hover:text-primary transition-colors">{item.name}</CardTitle>
                       <div className="flex items-baseline gap-2 mt-2">
                         <span className="text-2xl font-bold text-primary">{item.price}</span>
                         <span className="text-sm text-slate-500 flex items-center gap-1"><Clock className="h-3 w-3" /> {item.time}</span>
                       </div>
                     </CardHeader>
-                    <CardContent className="flex-1 space-y-4">
-                      <div>
-                        <div className="text-sm font-semibold text-slate-900 mb-1">Problem:</div>
-                        <p className="text-sm text-slate-600">{item.problem}</p>
+                    <CardContent className="flex-1 space-y-4 pt-6">
+                      <div className="p-3 bg-red-50 rounded-md border border-red-100">
+                        <div className="text-sm font-semibold text-red-800 mb-1 flex items-center gap-2"><X className="h-3 w-3" /> Problem:</div>
+                        <p className="text-sm text-slate-700">{item.problem}</p>
                       </div>
-                      <div>
-                        <div className="text-sm font-semibold text-slate-900 mb-1">Promise (ROI):</div>
-                        <p className="text-sm text-slate-600">{item.roi}</p>
+                      <div className="p-3 bg-green-50 rounded-md border border-green-100">
+                        <div className="text-sm font-semibold text-green-800 mb-1 flex items-center gap-2"><CheckCircle2 className="h-3 w-3" /> Promise (ROI):</div>
+                        <p className="text-sm text-slate-700">{item.roi}</p>
                       </div>
                     </CardContent>
                     <CardFooter>
-                      <Button className="w-full" variant="outline" onClick={() => scrollToSection('contact')}>Inquire Now</Button>
+                      <Button className="w-full group-hover:bg-primary group-hover:text-white transition-colors" variant="outline" onClick={() => scrollToSection('contact')}>Inquire Now</Button>
                     </CardFooter>
                   </Card>
                 ))}
@@ -414,26 +430,27 @@ export default function Home() {
                     roi: "Saves up to R500,000 in potential losses."
                   }
                 ].map((item, i) => (
-                  <Card key={i} className="flex flex-col">
-                    <CardHeader>
-                      <CardTitle className="text-lg">{item.name}</CardTitle>
+                  <Card key={i} className="flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary/50 group overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <CardHeader className="group-hover:bg-slate-50/50 transition-colors">
+                      <CardTitle className="text-lg group-hover:text-primary transition-colors">{item.name}</CardTitle>
                       <div className="flex flex-col mt-2">
                         <span className="text-xl font-bold text-primary">{item.price}</span>
                         <span className="text-xs text-slate-500 flex items-center gap-1"><Clock className="h-3 w-3" /> {item.time}</span>
                       </div>
                     </CardHeader>
-                    <CardContent className="flex-1 space-y-4">
-                      <div>
-                        <div className="text-xs font-semibold text-slate-900 mb-1">Problem:</div>
-                        <p className="text-xs text-slate-600">{item.problem}</p>
+                    <CardContent className="flex-1 space-y-4 pt-6">
+                      <div className="p-2 bg-red-50 rounded-md border border-red-100">
+                        <div className="text-xs font-semibold text-red-800 mb-1">Problem:</div>
+                        <p className="text-xs text-slate-700">{item.problem}</p>
                       </div>
-                      <div>
-                        <div className="text-xs font-semibold text-slate-900 mb-1">Promise (ROI):</div>
-                        <p className="text-xs text-slate-600">{item.roi}</p>
+                      <div className="p-2 bg-green-50 rounded-md border border-green-100">
+                        <div className="text-xs font-semibold text-green-800 mb-1">Promise (ROI):</div>
+                        <p className="text-xs text-slate-700">{item.roi}</p>
                       </div>
                     </CardContent>
                     <CardFooter>
-                      <Button className="w-full" variant="outline" size="sm" onClick={() => scrollToSection('contact')}>Inquire</Button>
+                      <Button className="w-full group-hover:bg-primary group-hover:text-white transition-colors" variant="outline" size="sm" onClick={() => scrollToSection('contact')}>Inquire</Button>
                     </CardFooter>
                   </Card>
                 ))}
@@ -468,9 +485,9 @@ export default function Home() {
                     service: "Fractional Head of Strategy."
                   }
                 ].map((item, i) => (
-                  <Card key={i} className="flex flex-col border-primary/20 bg-blue-50/30">
+                  <Card key={i} className="flex flex-col border-primary/20 bg-blue-50/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary group">
                     <CardHeader>
-                      <CardTitle className="text-lg">{item.name}</CardTitle>
+                      <CardTitle className="text-lg group-hover:text-primary transition-colors">{item.name}</CardTitle>
                       <div className="flex flex-col mt-2">
                         <span className="text-xl font-bold text-primary">{item.price}</span>
                         <span className="text-xs text-slate-500 flex items-center gap-1"><Clock className="h-3 w-3" /> {item.time}</span>
@@ -480,7 +497,7 @@ export default function Home() {
                       <p className="text-sm text-slate-700">{item.service}</p>
                     </CardContent>
                     <CardFooter>
-                      <Button className="w-full" onClick={() => scrollToSection('contact')}>Select Plan</Button>
+                      <Button className="w-full group-hover:bg-primary group-hover:text-white transition-colors" onClick={() => scrollToSection('contact')}>Select Plan</Button>
                     </CardFooter>
                   </Card>
                 ))}
@@ -625,8 +642,11 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="border-t border-slate-800 pt-8 text-center text-xs opacity-60">
-            © {new Date().getFullYear()} Progreso Consultants. All rights reserved.
+          <div className="border-t border-slate-800 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-xs opacity-60">
+            <p>© {new Date().getFullYear()} Progreso Consultants. All rights reserved.</p>
+            <p className="mt-2 md:mt-0">
+              Developed by <a href="https://infinityworkitsolutions.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors hover:underline">Infinity Work IT Solutions</a>
+            </p>
           </div>
         </div>
       </footer>
