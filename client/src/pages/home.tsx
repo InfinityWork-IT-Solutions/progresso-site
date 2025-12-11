@@ -81,9 +81,9 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-slate-50">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 shadow-sm">
-        <div className="container mx-auto px-4 h-24 flex items-center justify-between">
+        <div className="container mx-auto px-4 h-32 flex items-center justify-between">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <img src={logo} alt="Progreso Consultants" className="h-20 w-auto mix-blend-multiply" />
+            <img src={logo} alt="Progreso Consultants" className="h-28 w-auto mix-blend-multiply" />
           </div>
 
           {/* Desktop Nav */}
