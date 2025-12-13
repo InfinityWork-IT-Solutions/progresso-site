@@ -25,6 +25,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
+import { HeroSlideshow } from "@/components/hero-slideshow";
 import logo from "@/assets/logo-transparent.png";
 import heroBg from "@assets/generated_images/modern_corporate_office_hero_background_with_blue_tones.png";
 import patternBg from "@assets/generated_images/subtle_abstract_geometric_corporate_background.png";
@@ -112,39 +113,43 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative py-28 lg:py-40 overflow-hidden">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img src={heroBg} alt="Background" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-slate-900/70"></div>
-        </div>
-        
-        <div className="container px-4 md:px-6 relative z-10">
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={stagger}
-            className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto"
-          >
-            <motion.div variants={fadeIn} className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/90 uppercase tracking-wider shadow-lg">
-              We are For The SMMEs
+      <section className="relative py-28 lg:py-40 overflow-hidden min-h-[600px]">
+        <HeroSlideshow
+          images={[
+            heroBg,
+            "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80",
+            "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920&q=80",
+            "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1920&q=80"
+          ]}
+          autoPlayInterval={6000}
+        >
+          <div className="container px-4 md:px-6 relative z-10 h-full flex items-center">
+            <motion.div 
+              initial="hidden"
+              animate="visible"
+              variants={stagger}
+              className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto w-full"
+            >
+              <motion.div variants={fadeIn} className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/90 uppercase tracking-wider shadow-lg">
+                We are For The SMMEs
+              </motion.div>
+              <motion.h1 variants={fadeIn} className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white font-heading drop-shadow-md">
+                The Engine of the Economy
+              </motion.h1>
+              <motion.p variants={fadeIn} className="text-xl md:text-2xl text-slate-100 max-w-[800px] drop-shadow-sm leading-relaxed">
+                Building the Backbone of South Africa's Economy. We turn survivalist enterprises into sustainable assets through fixed-cost, high-impact strategy.
+              </motion.p>
+              <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Button size="lg" className="h-14 px-8 text-lg bg-primary hover:bg-blue-600 text-white border-none shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1" onClick={() => scrollToSection('contact')}>
+                  Start Growing Today <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <Button variant="outline" size="lg" className="h-14 px-8 text-lg bg-white/10 text-white border-white/30 hover:bg-white hover:text-slate-900 backdrop-blur-sm transition-all hover:-translate-y-1" onClick={() => scrollToSection('solutions')}>
+                  View Our Solutions
+                </Button>
+              </motion.div>
             </motion.div>
-            <motion.h1 variants={fadeIn} className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white font-heading drop-shadow-md">
-              The Engine of the Economy
-            </motion.h1>
-            <motion.p variants={fadeIn} className="text-xl md:text-2xl text-slate-100 max-w-[800px] drop-shadow-sm leading-relaxed">
-              Building the Backbone of South Africa’s Economy. We turn survivalist enterprises into sustainable assets through fixed-cost, high-impact strategy.
-            </motion.p>
-            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button size="lg" className="h-14 px-8 text-lg bg-primary hover:bg-blue-600 text-white border-none shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1" onClick={() => scrollToSection('contact')}>
-                Start Growing Today <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button variant="outline" size="lg" className="h-14 px-8 text-lg bg-white/10 text-white border-white/30 hover:bg-white hover:text-slate-900 backdrop-blur-sm transition-all hover:-translate-y-1" onClick={() => scrollToSection('solutions')}>
-                View Our Solutions
-              </Button>
-            </motion.div>
-          </motion.div>
-        </div>
+          </div>
+        </HeroSlideshow>
       </section>
 
       {/* Core Identity Section */}
@@ -153,7 +158,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0 opacity-40">
            <img src={patternBg} alt="" className="w-full h-full object-cover" />
         </div>
-        <div className="container px-4 md:px-6 relative z-10">
+        <div className="container px-4 md:px-6 max-w-7xl mx-auto relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -202,7 +207,7 @@ export default function Home() {
             <div className="absolute top-0 right-0 p-12 opacity-5">
               <img src={logo} alt="" className="w-64 h-auto grayscale" />
             </div>
-            <h3 className="text-2xl font-bold mb-6 font-heading">Our Values</h3>
+            <h3 className="text-2xl font-bold mb-6 font-heading text-center">Our Values</h3>
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 { title: "Pragmatism", desc: "Actionable systems over abstract theory." },
@@ -252,9 +257,9 @@ export default function Home() {
 
       {/* The Struggle & Competitors */}
       <section id="why-us" className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 max-w-7xl mx-auto">
           <div className="mb-16">
-            <h2 className="text-3xl font-bold font-heading mb-6">The "Death Valley" Reality</h2>
+            <h2 className="text-3xl font-bold font-heading mb-6 text-center">The "Death Valley" Reality</h2>
             <div className="grid md:grid-cols-3 gap-6">
               <Card>
                 <CardHeader>
@@ -287,7 +292,7 @@ export default function Home() {
           </div>
 
           <div className="space-y-8">
-            <h2 className="text-3xl font-bold font-heading">Why Help Hasn't Helped</h2>
+            <h2 className="text-3xl font-bold font-heading text-center">Why Help Hasn't Helped</h2>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
@@ -324,7 +329,7 @@ export default function Home() {
 
       {/* Solutions Section */}
       <section id="solutions" className="py-20 bg-slate-50">
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl font-bold font-heading mb-4">Our Solutions</h2>
             <p className="text-slate-600">We offer strategic rigor with a Fixed Cost, Fixed Time model.</p>
@@ -509,10 +514,10 @@ export default function Home() {
 
       {/* CTA Section */}
       <section id="contact" className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold font-heading mb-12 text-center">Ready to Defy the Odds?</h2>
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div>
-              <h2 className="text-4xl font-bold font-heading mb-6">Ready to Defy the Odds?</h2>
               <p className="text-xl text-slate-600 mb-8">
                 Stop Guessing. Start Growing. You don't need another generic workshop. You need a battle plan.
               </p>
