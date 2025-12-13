@@ -117,9 +117,9 @@ export default function Home() {
         <HeroSlideshow
           images={[
             heroBg,
-            "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80",
-            "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920&q=80",
-            "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1920&q=80"
+            "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1280&q=75&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1280&q=75&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1280&q=75&auto=format&fit=crop"
           ]}
           autoPlayInterval={6000}
         >
