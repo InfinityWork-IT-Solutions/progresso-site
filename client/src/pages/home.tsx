@@ -25,6 +25,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/queryClient";
 import { HeroSlideshow } from "@/components/hero-slideshow";
 import logo from "@/assets/logo-transparent.png";
 import heroBg from "@assets/generated_images/modern_corporate_office_hero_background_with_blue_tones.png";
@@ -49,6 +50,7 @@ const formSchema = z.object({
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -61,13 +63,30 @@ export default function Home() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: "Discovery Call Requested",
-      description: "We'll be in touch shortly to schedule your session.",
-    });
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    try {
+      const response = await apiRequest("POST", "/api/contact", values);
+      const data = await response.json();
+
+      if (data.success) {
+        toast({
+          title: "Discovery Call Requested",
+          description: data.message || "We'll be in touch shortly to schedule your session.",
+        });
+        form.reset();
+      } else {
+        throw new Error(data.message || "Failed to send message");
+      }
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to send your message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   const scrollToSection = (id: string) => {
@@ -610,7 +629,9 @@ export default function Home() {
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full text-lg h-12">Submit Request</Button>
+                  <Button type="submit" className="w-full text-lg h-12" disabled={isSubmitting}>
+                    {isSubmitting ? "Sending..." : "Submit Request"}
+                  </Button>
                 </form>
               </Form>
             </div>
