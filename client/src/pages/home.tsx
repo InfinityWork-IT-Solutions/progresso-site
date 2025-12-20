@@ -45,6 +45,7 @@ const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
   email: z.string().email("Invalid email address"),
   phone: z.string().min(10, "Phone number is required"),
+  company: z.string().min(2, "Company name is required"),
   message: z.string().optional(),
 });
 
@@ -59,6 +60,7 @@ export default function Home() {
       name: "",
       email: "",
       phone: "",
+      company: "",
       message: "",
     },
   });
@@ -611,6 +613,19 @@ export default function Home() {
                         <FormLabel>Phone Number</FormLabel>
                         <FormControl>
                           <Input placeholder="072 123 4567" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="company"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Company Name</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Your Company" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

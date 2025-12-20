@@ -26,15 +26,15 @@ export async function registerRoutes(
   // Contact form submission endpoint
   app.post("/api/contact", async (req: Request, res: Response) => {
     try {
-      const { name, email, phone, message } = req.body;
+      const { name, email, phone, company, message } = req.body;
 
       log(`Contact form submission received from ${name} (${email})`, "api");
 
       // Validate required fields
-      if (!name || !email || !phone) {
+      if (!name || !email || !phone || !company) {
         return res.status(400).json({
           success: false,
-          message: "Name, email, and phone are required fields.",
+          message: "Name, email, phone, and company are required fields.",
         });
       }
 
@@ -52,6 +52,7 @@ export async function registerRoutes(
         name: name.trim(),
         email: email.trim(),
         phone: phone.trim(),
+        company: company.trim(),
         message: message?.trim() || undefined,
       });
 

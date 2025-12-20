@@ -1,14 +1,15 @@
-modules = ["nodejs-20", "web", "postgresql-16"]
+modules = ["nodejs-20", "web"]
 run = "npm run dev"
 hidden = [".config", ".git", "generated-icon.png", "node_modules", "dist"]
 
 [nix]
-channel = "stable-24_05"
+channel = "stable-25_05"
 
 [deployment]
-deploymentTarget = "static"
+deploymentTarget = "autoscale"
 build = ["npm", "run", "build"]
 publicDir = "dist/public"
+run = ["node", "./dist/index.cjs"]
 
 [[ports]]
 localPort = 5000
@@ -39,8 +40,17 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npm run dev:client"
+args = "npm run dev"
 waitForPort = 5000
 
 [agent]
-mockupState = "MOCKUP"
+mockupState = "FULLSTACK"
+expertMode = true
+
+[userenv]
+
+[userenv.shared]
+CONTACT_EMAIL = "jody@progreso.consulting"
+BREVO_API_KEY = "your-brevo-api-key-here"
+BREVO_SENDER_EMAIL = "jody@progreso.consulting"
+BREVO_SENDER_NAME = "Progreso Consultants"
