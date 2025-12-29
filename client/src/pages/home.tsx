@@ -68,6 +68,7 @@ export default function Home() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
+      console.log("Submitting to /api/contact...");
       const response = await apiRequest("POST", "/api/contact", values);
       const data = await response.json();
 
