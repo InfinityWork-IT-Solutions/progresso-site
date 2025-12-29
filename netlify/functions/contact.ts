@@ -16,6 +16,12 @@ async function sendContactEmail(data: ContactFormData): Promise<void> {
     CONTACT_EMAIL,
   } = process.env;
 
+  console.log("Env check:", {
+    hasApiKey: !!BREVO_API_KEY,
+    senderEmail: BREVO_SENDER_EMAIL,
+    contactEmail: CONTACT_EMAIL
+  });
+
   if (!BREVO_API_KEY || !BREVO_SENDER_EMAIL || !CONTACT_EMAIL) {
     throw new Error(
       "Email configuration missing. Please set BREVO_API_KEY, BREVO_SENDER_EMAIL, and CONTACT_EMAIL environment variables in Netlify."
