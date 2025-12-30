@@ -12,7 +12,16 @@ export async function apiRequest(
   url: string,
   data?: unknown | undefined,
 ): Promise<Response> {
-  const res = await fetch(url, {
+  // Map /api requests to Netlify functions path if on Netlify
+  const isNetlify = window.location.hostname.includes("netlify.app") || 
+                    window.location.hostname.includes("progreso.consulting");
+  
+  let targetUrl = url;
+  if (isNetlify && url.startsWith("/api/")) {
+    targetUrl = "/.netlify/functions/" + url.replace("/api/", "");
+  }
+
+  const res = await fetch(targetUrl, {
     method,
     headers: data ? { "Content-Type": "application/json" } : {},
     body: data ? JSON.stringify(data) : undefined,
