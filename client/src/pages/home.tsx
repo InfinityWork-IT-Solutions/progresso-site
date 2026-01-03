@@ -32,6 +32,9 @@ import heroBg from "@assets/generated_images/modern_corporate_office_hero_backgr
 import patternBg from "@assets/generated_images/subtle_abstract_geometric_corporate_background.png";
 import celebratingEntrepreneurship from "@assets/WhatsApp_Image_2025-12-18_at_12.14.05_1767429039029.jpeg";
 import growingOurFuture from "@assets/WhatsApp_Image_2025-12-18_at_12.42.41_1767429041524.jpeg";
+import testimonial1 from "@assets/WhatsApp_Image_2025-12-18_at_11.17.07_1767429161099.jpeg";
+import testimonial2 from "@assets/WhatsApp_Image_2025-12-18_at_11.16.45_1767429163490.jpeg";
+import testimonial3 from "@assets/WhatsApp_Image_2025-12-18_at_11.16.19_1767429165881.jpeg";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -250,6 +253,40 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-24 bg-white relative overflow-hidden border-t">
+        <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-heading mb-4">Client Testimonials</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">Don't just take our word for it. Here is what our clients have to say about working with Progreso Consultants.</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[testimonial1, testimonial2, testimonial3].map((img, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="rounded-xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white"
+              >
+                <img 
+                  src={img} 
+                  alt={`Testimonial ${i + 1}`} 
+                  className="w-full h-auto object-cover"
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
