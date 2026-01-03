@@ -30,6 +30,8 @@ import { HeroSlideshow } from "@/components/hero-slideshow";
 import logo from "@/assets/logo-transparent.png";
 import heroBg from "@assets/generated_images/modern_corporate_office_hero_background_with_blue_tones.png";
 import patternBg from "@assets/generated_images/subtle_abstract_geometric_corporate_background.png";
+import celebratingEntrepreneurship from "@assets/WhatsApp_Image_2025-12-18_at_12.14.05_1767429039029.jpeg";
+import growingOurFuture from "@assets/WhatsApp_Image_2025-12-18_at_12.42.41_1767429041524.jpeg";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -138,6 +140,8 @@ export default function Home() {
       <section className="relative py-28 lg:py-40 overflow-hidden min-h-[600px]">
         <HeroSlideshow
           images={[
+            celebratingEntrepreneurship,
+            growingOurFuture,
             heroBg,
             "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1280&q=75&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1280&q=75&auto=format&fit=crop",
