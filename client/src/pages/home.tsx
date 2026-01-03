@@ -8,10 +8,12 @@ import {
   BarChart3, 
   Briefcase, 
   CheckCircle2, 
+  ChevronLeft,
   ChevronRight, 
   Clock, 
   FileText, 
   LayoutDashboard, 
+  Maximize2,
   Menu, 
   TrendingUp, 
   Users, 
@@ -24,6 +26,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { HeroSlideshow } from "@/components/hero-slideshow";
@@ -69,6 +72,9 @@ export default function Home() {
       message: "",
     },
   });
+
+  const [selectedTestimonial, setSelectedTestimonial] = useState<number | null>(null);
+  const testimonials = [testimonial1, testimonial2, testimonial3];
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
@@ -271,15 +277,21 @@ export default function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[testimonial1, testimonial2, testimonial3].map((img, i) => (
+            {testimonials.map((img, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="rounded-xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white"
+                className="rounded-xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white group cursor-pointer relative"
+                onClick={() => setSelectedTestimonial(i)}
               >
+                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10">
+                  <div className="bg-white/90 p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                    <Maximize2 className="h-6 w-6 text-primary" />
+                  </div>
+                </div>
                 <img 
                   src={img} 
                   alt={`Testimonial ${i + 1}`} 
@@ -288,6 +300,57 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+
+          {/* Testimonial Lightbox */}
+          <Dialog open={selectedTestimonial !== null} onOpenChange={(open) => !open && setSelectedTestimonial(null)}>
+            <DialogContent className="max-w-5xl p-0 overflow-hidden bg-transparent border-none shadow-2xl">
+              <div className="relative group">
+                <img 
+                  src={selectedTestimonial !== null ? testimonials[selectedTestimonial] : ""} 
+                  alt="Testimonial Full View" 
+                  className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+                />
+                
+                {/* Navigation Buttons */}
+                <div className="absolute inset-y-0 left-0 flex items-center p-4">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="bg-black/20 hover:bg-black/40 text-white rounded-full h-12 w-12 transition-all opacity-0 group-hover:opacity-100"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedTestimonial(prev => prev !== null ? (prev - 1 + testimonials.length) % testimonials.length : null);
+                    }}
+                  >
+                    <ChevronLeft className="h-8 w-8" />
+                  </Button>
+                </div>
+                
+                <div className="absolute inset-y-0 right-0 flex items-center p-4">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="bg-black/20 hover:bg-black/40 text-white rounded-full h-12 w-12 transition-all opacity-0 group-hover:opacity-100"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedTestimonial(prev => prev !== null ? (prev + 1) % testimonials.length : null);
+                    }}
+                  >
+                    <ChevronRight className="h-8 w-8" />
+                  </Button>
+                </div>
+
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="absolute top-4 right-4 bg-black/20 hover:bg-black/40 text-white rounded-full h-10 w-10 z-50"
+                  onClick={() => setSelectedTestimonial(null)}
+                >
+                  <X className="h-6 w-6" />
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </section>
 
