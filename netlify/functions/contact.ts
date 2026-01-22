@@ -42,7 +42,7 @@ async function sendContactEmail(data: ContactFormData): Promise<void> {
   try {
     // Email to business owner
     await transporter.sendMail({
-      from: `"Progreso Consultants" <${GMAIL_USER}>`,
+      from: `"${data.name}" <${GMAIL_USER}>`,
       to: CONTACT_EMAIL,
       replyTo: `"${data.name}" <${data.email}>`,
       subject: `New Discovery Call Request from ${data.name}`,
@@ -50,7 +50,7 @@ async function sendContactEmail(data: ContactFormData): Promise<void> {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #1e40af;">New Discovery Call Request</h2>
           <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <p><strong>Name:</strong> ${data.name}</p>
+            <p><strong>Sent by:</strong> ${data.name} (${data.email})</p>
             <p><strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a></p>
             <p><strong>Phone:</strong> <a href="tel:${data.phone}">${data.phone}</a></p>
             <p><strong>Company:</strong> ${data.company}</p>
