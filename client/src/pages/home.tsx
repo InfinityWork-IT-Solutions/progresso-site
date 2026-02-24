@@ -3,21 +3,21 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { 
-  ArrowRight, 
-  BarChart3, 
-  Briefcase, 
-  CheckCircle2, 
+import {
+  ArrowRight,
+  BarChart3,
+  Briefcase,
+  CheckCircle2,
   ChevronLeft,
-  ChevronRight, 
-  Clock, 
-  FileText, 
-  LayoutDashboard, 
+  ChevronRight,
+  Clock,
+  FileText,
+  LayoutDashboard,
   Maximize2,
-  Menu, 
-  TrendingUp, 
-  Users, 
-  X 
+  Menu,
+  TrendingUp,
+  Users,
+  X
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -116,17 +116,17 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-slate-50">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 shadow-sm">
-        <div className="container mx-auto px-4 h-[125px] flex items-center justify-between">
+        <div className="container mx-auto px-4 h-30 flex items-center justify-between">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <img src={logo} alt="Progreso Consultants" className="h-[125px] w-auto" />
+            <img src={logo} alt="Progreso Solutions" className="h-45 w-auto" />
           </div>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            <button onClick={() => scrollToSection('about')} className="text-sm font-medium hover:text-primary transition-colors">About Us</button>
-            <button onClick={() => scrollToSection('solutions')} className="text-sm font-medium hover:text-primary transition-colors">Solutions</button>
-            <button onClick={() => scrollToSection('why-us')} className="text-sm font-medium hover:text-primary transition-colors">Why Us</button>
-            <Button onClick={() => scrollToSection('contact')}>Book Discovery Call</Button>
+            <button onClick={() => scrollToSection('about')} className="text-sm font-bold uppercase tracking-wider hover:text-primary transition-colors">About Us</button>
+            <button onClick={() => scrollToSection('solutions')} className="text-sm font-bold uppercase tracking-wider hover:text-primary transition-colors">Solutions</button>
+            <button onClick={() => scrollToSection('why-us')} className="text-sm font-bold uppercase tracking-wider hover:text-primary transition-colors">Why Us</button>
+            <Button onClick={() => scrollToSection('contact')} className="h-11 px-6 font-bold uppercase tracking-widest shadow-lg">Book Discovery Call</Button>
           </div>
 
           {/* Mobile Nav Toggle */}
@@ -160,26 +160,29 @@ export default function Home() {
           autoPlayInterval={6000}
         >
           <div className="container px-4 md:px-6 relative z-10 h-full flex items-center">
-            <motion.div 
+            <motion.div
               initial="hidden"
               animate="visible"
               variants={stagger}
               className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto w-full"
             >
-              <motion.div variants={fadeIn} className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/90 uppercase tracking-wider shadow-lg">
-                We are For The SMMEs
+              <motion.div variants={fadeIn} className="inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/90 uppercase tracking-widest shadow-lg mb-2">
+                WE ARE FOR THE SMMEs
               </motion.div>
-              <motion.h1 variants={fadeIn} className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white font-heading drop-shadow-md">
+              <motion.p variants={fadeIn} className="text-lg md:text-xl font-bold text-blue-400 uppercase tracking-widest mb-0 drop-shadow-sm">
+                Building the Backbone of South Africa's Economy
+              </motion.p>
+              <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white font-heading drop-shadow-md leading-[0.9] mt-2">
                 The Engine of the Economy
               </motion.h1>
-              <motion.p variants={fadeIn} className="text-xl md:text-2xl text-slate-100 max-w-[800px] drop-shadow-sm leading-relaxed">
-                Building the Backbone of South Africa's Economy. We turn survivalist enterprises into sustainable assets through fixed-cost, high-impact strategy.
+              <motion.p variants={fadeIn} className="text-xl md:text-2xl text-slate-100 max-w-[800px] drop-shadow-sm leading-relaxed mt-4">
+                We turn survivalist enterprises into sustainable assets through fixed-cost, high-impact strategy.
               </motion.p>
-              <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button size="lg" className="h-14 px-8 text-lg bg-primary hover:bg-blue-600 text-white border-none shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1" onClick={() => scrollToSection('contact')}>
-                  Start Growing Today <ArrowRight className="ml-2 h-5 w-5" />
+              <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-6 pt-8">
+                <Button size="lg" className="h-16 px-10 text-xl font-bold bg-primary hover:bg-blue-600 text-white border-none shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1" onClick={() => scrollToSection('contact')}>
+                  Start Growing Today <ArrowRight className="ml-2 h-6 w-6" />
                 </Button>
-                <Button variant="outline" size="lg" className="h-14 px-8 text-lg bg-white/10 text-white border-white/30 hover:bg-white hover:text-slate-900 backdrop-blur-sm transition-all hover:-translate-y-1" onClick={() => scrollToSection('solutions')}>
+                <Button variant="outline" size="lg" className="h-16 px-10 text-xl font-bold bg-white/10 text-white border-white/30 hover:bg-white hover:text-slate-900 backdrop-blur-sm transition-all hover:-translate-y-1" onClick={() => scrollToSection('solutions')}>
                   View Our Solutions
                 </Button>
               </motion.div>
@@ -192,56 +195,56 @@ export default function Home() {
       <section id="about" className="py-24 bg-slate-50 relative overflow-hidden">
         {/* Subtle Pattern Background */}
         <div className="absolute inset-0 z-0 opacity-40">
-           <img src={patternBg} alt="" className="w-full h-full object-cover" />
+          <img src={patternBg} alt="" className="w-full h-full object-cover" />
         </div>
         <div className="container px-4 md:px-6 max-w-7xl mx-auto relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-heading mb-4">Our Core Identity</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-heading mb-4 uppercase">Our Core Identity</h2>
             <p className="text-slate-600 max-w-2xl mx-auto">We don't accept the statistic that 80% of businesses MUST fail.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Our Mission",
+                title: "OUR MISSION",
                 content: "To open access to elite managerial capital for South Africa's \"Missing Middle,\" transforming small businesses into intergenerational assets.",
                 icon: <TrendingUp className="h-8 w-8 text-primary" />
               },
               {
-                title: "Our Vision",
+                title: "OUR VISION",
                 content: "A South African economy anchored by a resilient, inclusive, and formalized SMME sector that serves as the primary engine for employment.",
                 icon: <Users className="h-8 w-8 text-primary" />
               },
               {
-                title: "Our Purpose",
+                title: "OUR PURPOSE",
                 content: "We bridge the gap between entrepreneurial passion and operational proficiency. We provide the scaffolding for survival and the blueprint for scale.",
                 icon: <Briefcase className="h-8 w-8 text-primary" />
               }
             ].map((item, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group"
+                className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group text-center flex flex-col items-center"
               >
-                <div className="absolute top-0 left-0 w-1 h-full bg-primary/0 group-hover:bg-primary/100 transition-all duration-300"></div>
-                <div className="mb-4 p-3 bg-blue-50 rounded-lg w-fit group-hover:bg-blue-100 transition-colors">{item.icon}</div>
-                <h3 className="text-xl font-bold mb-3 font-heading">{item.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{item.content}</p>
+                <div className="absolute top-0 left-0 w-full h-1 bg-primary/0 group-hover:bg-primary/100 transition-all duration-300"></div>
+                <div className="mb-6 p-4 bg-blue-50 rounded-full w-fit group-hover:bg-blue-100 transition-colors">{item.icon}</div>
+                <h3 className="text-2xl font-black mb-4 font-heading tracking-widest">{item.title}</h3>
+                <p className="text-slate-600 leading-relaxed text-lg">{item.content}</p>
               </motion.div>
             ))}
           </div>
 
           <div className="mt-16 bg-white p-8 md:p-12 rounded-2xl border shadow-lg relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-12 opacity-5">
-              <img src={logo} alt="" className="w-64 h-auto grayscale" />
+            <div className="absolute top-0 right-0 p-6 opacity-5">
+              <img src={logo} alt="" className="w-96 h-auto grayscale" />
             </div>
             <h3 className="text-2xl font-bold mb-6 font-heading text-center">Our Values</h3>
             <div className="grid md:grid-cols-2 gap-6">
@@ -267,14 +270,14 @@ export default function Home() {
       {/* Testimonials Section */}
       <section className="py-24 bg-white relative overflow-hidden border-t">
         <div className="container px-4 md:px-6 max-w-7xl mx-auto">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-heading mb-4">Client Testimonials</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">Don't just take our word for it. Here is what our clients have to say about working with Progreso Consultants.</p>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-heading mb-4 uppercase">CLIENT TESTIMONIALS</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto text-xl">Don't just take our word for it. Here is what our clients have to say about working with us.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -293,9 +296,9 @@ export default function Home() {
                     <Maximize2 className="h-6 w-6 text-primary" />
                   </div>
                 </div>
-                <img 
-                  src={img} 
-                  alt={`Testimonial ${i + 1}`} 
+                <img
+                  src={img}
+                  alt={`Testimonial ${i + 1}`}
                   className="w-full h-auto object-cover"
                 />
               </motion.div>
@@ -306,12 +309,12 @@ export default function Home() {
           <Dialog open={selectedTestimonial !== null} onOpenChange={(open) => !open && setSelectedTestimonial(null)}>
             <DialogContent className="max-w-5xl p-0 overflow-hidden bg-transparent border-none shadow-2xl">
               <div className="relative group">
-                <img 
-                  src={selectedTestimonial !== null ? testimonials[selectedTestimonial] : ""} 
-                  alt="Testimonial Full View" 
+                <img
+                  src={selectedTestimonial !== null ? testimonials[selectedTestimonial] : ""}
+                  alt="Testimonial Full View"
                   className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
                 />
-                
+
                 {/* Navigation Buttons */}
                 <div className="absolute inset-y-0 left-0 flex items-center p-4">
                   <Button
@@ -326,7 +329,7 @@ export default function Home() {
                     <ChevronLeft className="h-8 w-8" />
                   </Button>
                 </div>
-                
+
                 <div className="absolute inset-y-0 right-0 flex items-center p-4">
                   <Button
                     variant="ghost"
@@ -341,9 +344,9 @@ export default function Home() {
                   </Button>
                 </div>
 
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
+                <Button
+                  variant="ghost"
+                  size="icon"
                   className="absolute top-4 right-4 bg-black/20 hover:bg-black/40 text-white rounded-full h-10 w-10 z-50"
                   onClick={() => setSelectedTestimonial(null)}
                 >
@@ -355,29 +358,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
       <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-2xl md:text-4xl font-bold uppercase tracking-wider mb-2">Small and Medium Enterprises are Big Business</h2>
+          </motion.div>
           <div className="grid md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-primary-foreground/20">
             <div className="p-4">
+              <div className="text-4xl md:text-5xl font-bold mb-2">91%</div>
+              <div className="text-primary-foreground/80 font-medium">of formal businesses are small and medium sized</div>
+            </div>
+            <div className="p-4">
               <div className="text-4xl md:text-5xl font-bold mb-2">34%</div>
-              <div className="text-primary-foreground/80 font-medium">GDP Contribution</div>
+              <div className="text-primary-foreground/80 font-medium">Contribution to GDP</div>
             </div>
             <div className="p-4">
               <div className="text-4xl md:text-5xl font-bold mb-2">60%</div>
-              <div className="text-primary-foreground/80 font-medium">Labor Force Absorption</div>
+              <div className="text-primary-foreground/80 font-medium">of jobs created</div>
             </div>
             <div className="p-4">
-              <div className="text-4xl md:text-5xl font-bold mb-2">R900B</div>
-              <div className="text-primary-foreground/80 font-medium">Township Economy Value</div>
-            </div>
-            <div className="p-4">
-              <div className="text-4xl md:text-5xl font-bold mb-2">80%</div>
-              <div className="text-primary-foreground/80 font-medium">Unregistered Businesses</div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">R5 Trillion</div>
+              <div className="text-primary-foreground/80 font-medium">Turnover from formal SMMEs</div>
             </div>
           </div>
-          <div className="text-center mt-12 max-w-2xl mx-auto">
-            <p className="text-lg opacity-90">"Despite the headlines, the SMME sector is the true heartbeat of South Africa. You are not just a participant in the economy; you are the economy."</p>
+          <div className="text-center mt-12 max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl opacity-90 leading-relaxed font-medium">"Despite the headlines, the SMME sector is the true heartbeat of South Africa. You are not just a participant in the economy; you are the economy."</p>
           </div>
         </div>
       </section>
@@ -396,9 +406,9 @@ export default function Home() {
               className="relative"
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 aspect-square max-w-md mx-auto lg:mx-0">
-                <img 
-                  src={ceoJody} 
-                  alt="Jody - CEO of Progreso Consultants" 
+                <img
+                  src={ceoJody}
+                  alt="Jody - CEO of Progreso Consultants"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
@@ -418,9 +428,9 @@ export default function Home() {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6 text-primary">A Message from Our Founder</h2>
-                <div className="space-y-4 text-slate-300 leading-relaxed text-lg">
-                  <p className="italic text-white border-l-4 border-primary pl-4 py-2 bg-white/5 rounded-r-lg">
+                <h2 className="text-3xl md:text-5xl font-bold font-heading mb-8 text-primary uppercase">Our Founder & Specialist</h2>
+                <div className="text-slate-300 leading-relaxed text-xl space-y-6">
+                  <p className="italic text-white border-l-4 border-primary pl-6 py-4 bg-white/5 rounded-r-lg text-2xl font-serif">
                     "Too many ventures fail because they solve problems the market doesn't need. I exist to fix that, as a start."
                   </p>
                   <p>
@@ -429,37 +439,21 @@ export default function Home() {
                   <p>
                     Other consultants fail. I take the consistent 80% certainty of failure of businesses like yours in 5 years as a part of the proof. This high failure rate hasn't changed much for 23 years. Ask yourself why?
                   </p>
+                  <p>
+                    I am a specialist dedicated to giving enterprise grade consultancy services to SA's SMB's. No upfront fee. No obligations. Just real talk between a passionate professional and you, the holder of a dream.
+                  </p>
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                {[
-                  {
-                    title: "Market Validation",
-                    desc: "I assess market demand before you commit capital, saving you years of effort and hundreds of thousands of Rands."
-                  },
-                  {
-                    title: "Precision Positioning",
-                    desc: "I define your unique value against competitors and build pricing models based on deep customer knowledge."
-                  },
-                  {
-                    title: "Operational Excellence",
-                    desc: "I deploy OKRs and Continuous Improvement to turn verified strategies into scalable, profitable operations."
-                  }
-                ].map((item, i) => (
-                  <div key={i} className="bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
-                    <h4 className="font-bold text-white mb-2">{item.title}</h4>
-                    <p className="text-sm text-slate-400">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="p-6 bg-primary/10 border border-primary/20 rounded-2xl">
-                <p className="text-slate-200 text-sm italic leading-relaxed">
-                  "I am a specialist dedicated to giving enterprise grade consultancy services to SA's SMB's. No upfront fee. No obligations. Just real talk between a passionate professional and you, the holder of a dream."
-                </p>
-                <Button 
-                  className="mt-6 w-full md:w-auto bg-primary hover:bg-primary/90 text-white"
+              <div className="p-8 bg-white/5 border border-white/10 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-8">
+                <div className="space-y-2 text-center md:text-left">
+                  <h4 className="font-bold text-primary text-lg uppercase tracking-widest">Connect Directly</h4>
+                  <p className="text-slate-400 text-sm italic">jody@progreso.consulting</p>
+                  <p className="text-slate-400 text-sm font-bold tracking-widest">+27 78 584 3558</p>
+                </div>
+                <Button
+                  size="lg"
+                  className="w-full md:w-auto bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest h-14 px-10 shadow-xl"
                   onClick={() => scrollToSection('contact')}
                 >
                   Let's Connect
@@ -474,35 +468,43 @@ export default function Home() {
       <section id="why-us" className="py-20 bg-white">
         <div className="container px-4 md:px-6 max-w-7xl mx-auto">
           <div className="mb-16">
-            <h2 className="text-3xl font-bold font-heading mb-6 text-center">The "Death Valley" Reality</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card>
+            <h2 className="text-3xl md:text-5xl font-bold font-heading mb-4 text-center uppercase tracking-tight">THE HARSH REALITY</h2>
+            <p className="text-center text-xl text-slate-600 max-w-3xl mx-auto mb-12">
+              The SMME sector is the heartbeat of South Africa, yet 80% of businesses fail within their first 5 years.
+            </p>
+            <div className="grid md:grid-cols-3 gap-8">
+              <Card className="border-t-4 border-t-destructive shadow-lg hover:shadow-xl transition-all">
                 <CardHeader>
-                  <CardTitle className="text-destructive">70-80%</CardTitle>
-                  <CardDescription>Failure Rate</CardDescription>
+                  <CardTitle className="text-4xl font-bold text-destructive">40%-70%</CardTitle>
+                  <CardDescription className="text-lg font-semibold text-slate-900">Immediate Risk</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  New entities collapse within their first five years.
+                <CardContent className="text-slate-600">
+                  New entities collapse within their very first year.
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="border-t-4 border-t-destructive shadow-lg hover:shadow-xl transition-all">
                 <CardHeader>
-                  <CardTitle className="text-destructive">35%</CardTitle>
-                  <CardDescription>The Product Trap</CardDescription>
+                  <CardTitle className="text-4xl font-bold text-destructive">60%</CardTitle>
+                  <CardDescription className="text-lg font-semibold text-slate-900">Profitability Gap</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  Startups fail simply because they built a product nobody wanted.
+                <CardContent className="text-slate-600">
+                  Businesses fail simply because they are non-profitable.
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="border-t-4 border-t-destructive shadow-lg hover:shadow-xl transition-all">
                 <CardHeader>
-                  <CardTitle className="text-destructive">Gap</CardTitle>
-                  <CardDescription>Execution Gap</CardDescription>
+                  <CardTitle className="text-4xl font-bold text-destructive">260,000</CardTitle>
+                  <CardDescription className="text-lg font-semibold text-slate-900">Economic Impact</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  Lack of "Managerial Capital" - systems required to survive cash flow crunches.
+                <CardContent className="text-slate-600">
+                  Potential jobs that will be lost in 2026 due to SMME failure.
                 </CardContent>
               </Card>
+            </div>
+            <div className="mt-12 text-center max-w-4xl mx-auto">
+              <p className="text-xl text-slate-700 leading-relaxed italic">
+                "Your failure to stay competitive, adapt to a tough economic environment, or secure vital financing often comes down to lacking the right strategy at the right time. It's not your fault you're fighting this battle alone."
+              </p>
             </div>
           </div>
 
@@ -545,9 +547,38 @@ export default function Home() {
       {/* Solutions Section */}
       <section id="solutions" className="py-20 bg-slate-50">
         <div className="container px-4 md:px-6 max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold font-heading mb-4">Our Solutions</h2>
-            <p className="text-slate-600">We offer strategic rigor with a Fixed Cost, Fixed Time model.</p>
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold font-heading mb-6 uppercase tracking-tight">Our Services and Solutions</h2>
+            <p className="text-xl md:text-3xl font-semibold text-primary mb-8">
+              We offer strategic rigor with a <span className="underline decoration-4 underline-offset-8">Fixed-cost, Fixed Time</span> model.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-8 text-left mt-16 bg-white p-8 rounded-2xl shadow-xl border border-blue-100">
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold flex items-center gap-2 text-slate-900">
+                  <div className="h-2 w-2 rounded-full bg-primary"></div> Accessible Pricing
+                </h3>
+                <p className="text-slate-600">No hourly billing or hidden fees. You get a Fixed-cost and Fixed Timeline before we start.</p>
+              </div>
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold flex items-center gap-2 text-slate-900">
+                  <div className="h-2 w-2 rounded-full bg-primary"></div> 100% Yours
+                </h3>
+                <p className="text-slate-600">Unlike incubators, we never ask for equity. We do the work; you keep the ownership.</p>
+              </div>
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold flex items-center gap-2 text-slate-900">
+                  <div className="h-2 w-2 rounded-full bg-primary"></div> Systems, Not Just Reports
+                </h3>
+                <p className="text-slate-600">We don't write dusty reports. We build operational "machines" that fix cash flow. The Bottom Line: Most consultants diagnose. We implement the fix.</p>
+              </div>
+            </div>
+
+            <div className="mt-12 p-6 bg-blue-50/50 rounded-xl border border-blue-200 inline-block">
+              <p className="text-lg font-bold text-blue-900 uppercase tracking-widest">
+                The "Progreso Difference": We provide corporate-level strategy at a fixed-cost and within a fixed time—distinguishing us from slow government programs or expensive corporate firms.
+              </p>
+            </div>
           </div>
 
           <Tabs defaultValue="startups" className="w-full">
@@ -591,27 +622,27 @@ export default function Home() {
                     roi: "Creates a non-negotiable standard for all decisions."
                   }
                 ].map((item, i) => (
-                  <Card key={i} className="flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary/50 group overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <CardHeader className="group-hover:bg-slate-50/50 transition-colors">
-                      <CardTitle className="group-hover:text-primary transition-colors">{item.name}</CardTitle>
+                  <Card key={i} className="flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary/50 group overflow-hidden bg-white border-2">
+                    <div className="h-2 w-full bg-primary"></div>
+                    <CardHeader className="group-hover:bg-slate-50/50 transition-colors pt-6">
+                      <CardTitle className="text-2xl group-hover:text-primary transition-colors font-black">{item.name}</CardTitle>
                       <div className="flex items-baseline gap-2 mt-2">
-                        <span className="text-2xl font-bold text-primary">{item.price}</span>
-                        <span className="text-sm text-slate-500 flex items-center gap-1"><Clock className="h-3 w-3" /> {item.time}</span>
+                        <span className="text-3xl font-black text-primary">{item.price}</span>
+                        <span className="text-sm font-bold text-slate-400 flex items-center gap-1"><Clock className="h-4 w-4" /> {item.time}</span>
                       </div>
                     </CardHeader>
                     <CardContent className="flex-1 space-y-4 pt-6">
-                      <div className="p-3 bg-red-50 rounded-md border border-red-100">
-                        <div className="text-sm font-semibold text-red-800 mb-1 flex items-center gap-2"><X className="h-3 w-3" /> Problem:</div>
-                        <p className="text-sm text-slate-700">{item.problem}</p>
+                      <div className="p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
+                        <div className="text-sm font-black text-red-700 mb-1 flex items-center gap-2 uppercase tracking-tighter">● Problem:</div>
+                        <p className="text-sm text-slate-700 font-medium">{item.problem}</p>
                       </div>
-                      <div className="p-3 bg-green-50 rounded-md border border-green-100">
-                        <div className="text-sm font-semibold text-green-800 mb-1 flex items-center gap-2"><CheckCircle2 className="h-3 w-3" /> Promise (ROI):</div>
-                        <p className="text-sm text-slate-700">{item.roi}</p>
+                      <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
+                        <div className="text-sm font-black text-green-700 mb-1 flex items-center gap-2 uppercase tracking-tighter">● Promise (ROI):</div>
+                        <p className="text-sm text-slate-700 font-medium">{item.roi}</p>
                       </div>
                     </CardContent>
-                    <CardFooter>
-                      <Button className="w-full group-hover:bg-primary group-hover:text-white transition-colors" variant="outline" onClick={() => scrollToSection('contact')}>Inquire Now</Button>
+                    <CardFooter className="pb-8">
+                      <Button className="w-full h-12 text-lg font-bold bg-white text-slate-900 border-2 border-slate-900 hover:bg-slate-900 hover:text-white transition-all" variant="outline" onClick={() => scrollToSection('contact')}>Inquire Now</Button>
                     </CardFooter>
                   </Card>
                 ))}
@@ -620,7 +651,7 @@ export default function Home() {
 
             <TabsContent value="scaling" className="space-y-6">
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                 {[
+                {[
                   {
                     name: "Product Profit Audit",
                     price: "R12,000",
@@ -650,27 +681,27 @@ export default function Home() {
                     roi: "Saves up to R500,000 in potential losses."
                   }
                 ].map((item, i) => (
-                  <Card key={i} className="flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary/50 group overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <CardHeader className="group-hover:bg-slate-50/50 transition-colors">
-                      <CardTitle className="text-lg group-hover:text-primary transition-colors">{item.name}</CardTitle>
+                  <Card key={i} className="flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary/50 group overflow-hidden bg-white border-2">
+                    <div className="h-2 w-full bg-primary"></div>
+                    <CardHeader className="group-hover:bg-slate-50/50 transition-colors pt-6">
+                      <CardTitle className="text-xl group-hover:text-primary transition-colors font-black">{item.name}</CardTitle>
                       <div className="flex flex-col mt-2">
-                        <span className="text-xl font-bold text-primary">{item.price}</span>
-                        <span className="text-xs text-slate-500 flex items-center gap-1"><Clock className="h-3 w-3" /> {item.time}</span>
+                        <span className="text-2xl font-black text-primary">{item.price}</span>
+                        <span className="text-xs font-bold text-slate-400 flex items-center gap-1"><Clock className="h-3 w-3" /> {item.time}</span>
                       </div>
                     </CardHeader>
                     <CardContent className="flex-1 space-y-4 pt-6">
-                      <div className="p-2 bg-red-50 rounded-md border border-red-100">
-                        <div className="text-xs font-semibold text-red-800 mb-1">Problem:</div>
-                        <p className="text-xs text-slate-700">{item.problem}</p>
+                      <div className="p-3 bg-red-50 rounded-lg border-l-4 border-red-500">
+                        <div className="text-xs font-black text-red-700 mb-1 uppercase tracking-tighter">● Problem:</div>
+                        <p className="text-xs text-slate-700 font-medium">{item.problem}</p>
                       </div>
-                      <div className="p-2 bg-green-50 rounded-md border border-green-100">
-                        <div className="text-xs font-semibold text-green-800 mb-1">Promise (ROI):</div>
-                        <p className="text-xs text-slate-700">{item.roi}</p>
+                      <div className="p-3 bg-green-50 rounded-lg border-l-4 border-green-500">
+                        <div className="text-xs font-black text-green-700 mb-1 uppercase tracking-tighter">● Promise (ROI):</div>
+                        <p className="text-xs text-slate-700 font-medium">{item.roi}</p>
                       </div>
                     </CardContent>
-                    <CardFooter>
-                      <Button className="w-full group-hover:bg-primary group-hover:text-white transition-colors" variant="outline" size="sm" onClick={() => scrollToSection('contact')}>Inquire</Button>
+                    <CardFooter className="pb-8">
+                      <Button className="w-full h-12 text-lg font-bold bg-white text-slate-900 border-2 border-slate-900 hover:bg-slate-900 hover:text-white transition-all uppercase tracking-widest" variant="outline" onClick={() => scrollToSection('contact')}>Inquire Now</Button>
                     </CardFooter>
                   </Card>
                 ))}
@@ -678,8 +709,8 @@ export default function Home() {
             </TabsContent>
 
             <TabsContent value="retainers" className="space-y-6">
-               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                 {[
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {[
                   {
                     name: "Founder's Pulse Check",
                     price: "R1,500/mo",
@@ -705,19 +736,19 @@ export default function Home() {
                     service: "Fractional Head of Strategy."
                   }
                 ].map((item, i) => (
-                  <Card key={i} className="flex flex-col border-primary/20 bg-blue-50/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary group">
-                    <CardHeader>
-                      <CardTitle className="text-lg group-hover:text-primary transition-colors">{item.name}</CardTitle>
+                  <Card key={i} className="flex flex-col border-2 border-primary/20 bg-blue-50/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary group">
+                    <CardHeader className="pt-6">
+                      <CardTitle className="text-xl group-hover:text-primary transition-colors font-black">{item.name}</CardTitle>
                       <div className="flex flex-col mt-2">
-                        <span className="text-xl font-bold text-primary">{item.price}</span>
-                        <span className="text-xs text-slate-500 flex items-center gap-1"><Clock className="h-3 w-3" /> {item.time}</span>
+                        <span className="text-2xl font-black text-primary">{item.price}</span>
+                        <span className="text-xs font-bold text-slate-400 flex items-center gap-1"><Clock className="h-3 w-3" /> {item.time}</span>
                       </div>
                     </CardHeader>
                     <CardContent className="flex-1">
-                      <p className="text-sm text-slate-700">{item.service}</p>
+                      <p className="text-md text-slate-700 font-medium leading-relaxed">{item.service}</p>
                     </CardContent>
-                    <CardFooter>
-                      <Button className="w-full group-hover:bg-primary group-hover:text-white transition-colors" onClick={() => scrollToSection('contact')}>Select Plan</Button>
+                    <CardFooter className="pb-8">
+                      <Button className="w-full h-12 text-lg font-bold bg-primary text-white hover:bg-primary/90 transition-all uppercase tracking-widest shadow-lg" onClick={() => scrollToSection('contact')}>Inquire Now</Button>
                     </CardFooter>
                   </Card>
                 ))}
@@ -756,7 +787,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="mt-12 p-6 bg-slate-50 rounded-lg border">
                 <h4 className="font-semibold mb-4">Contact Details</h4>
                 <div className="space-y-2 text-slate-600">
@@ -770,7 +801,7 @@ export default function Home() {
             <div className="bg-white p-8 rounded-2xl shadow-lg border">
               <h3 className="text-2xl font-bold mb-2">Book Your Free Discovery Call</h3>
               <p className="text-slate-500 mb-6">We have limited capacity for new retainer clients. Secure your strategic advantage now.</p>
-              
+
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                   <FormField
@@ -854,9 +885,9 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <img src={logo} alt="Progreso" className="h-16 w-auto brightness-0 invert" />
+                <img src={logo} alt="Progreso Solutions" className="h-45 w-auto brightness-0 invert" />
               </div>
-              <p className="text-sm opacity-80 max-w-xs">
+              <p className="text-sm opacity-80 max-w-xs leading-relaxed">
                 Transforming small businesses into intergenerational assets through systems-driven consultancy.
               </p>
             </div>
